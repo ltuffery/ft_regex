@@ -4,23 +4,28 @@ CFLAGS	=	-Wall -Wextra -Werror -g
 
 NAME	=	regex
 
-SRCS	=	main.c
+SRCS	=	src/main.c \
+			src/ft_regex.c
 
 OBJS	=	$(SRCS:.c=.o)
 
 %.o:	%.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+	@$(CC) $(CFLAGS) -c $^ -o $@
 
 all:	$(NAME)
 
 $(NAME):	$(OBJS)
-	$(CC) $^ -lpthread -o $@
+	@make -s -C libft
+	@$(CC) $^ -lpthread -o $@ libft/libft.a
+	@echo finish
 
 clean:
-	rm -rf $(OBJS)
+	@make clean -s -C libft
+	@rm -rf $(OBJS)
 
 fclean:	clean
-	rm -rf $(NAME)
+	@make fclean -s -C libft
+	@rm -rf $(NAME)
 
 re:		fclean all
 

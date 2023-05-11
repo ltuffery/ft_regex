@@ -3,5 +3,8 @@
 
 t_matches	*ft_regex(char *rule, char *str, int options)
 {
+	(void)rule;
+	(void)str;
+	(void)options;
 	return (NULL);
 }
