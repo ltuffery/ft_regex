@@ -3,10 +3,7 @@
 
 # define O_GLOBAL 1
 # define O_MULTILINE 2
-# define O_INSENSITIVE 4
-# define O_EXTENDED 8
-# define O_SINGLELINE 16
-# define O_UNICODE 32
+# define O_IGNORECASE 4
 
 typedef struct	s_matches {
 	char 				*content;
