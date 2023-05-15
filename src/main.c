@@ -4,19 +4,21 @@
 
 int	main(int ac, char **av)
 {
+	t_matches	*matches;
 	t_matches	*tmp;
 
 	if (ac < 3 || ac > 3)
 	{
-		printf("Usage : ./regex <rule> <phrase>");
+		printf("Usage : ./regex <rule> <phrase>\n");
 		return (1);
 	}
-	tmp = ft_regex(av[1], av[2], 0);
+	matches = ft_regex(av[1], av[2], 0);
+	tmp = matches;
 	while (tmp != NULL)
 	{
 		printf("%s\n", tmp->content);
 		free(tmp->content);
 		tmp = tmp->next;
 	}
-	free(tmp);
+	free(matches);
 }
