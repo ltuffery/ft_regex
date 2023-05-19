@@ -5,7 +5,10 @@ CFLAGS	=	-Wall -Wextra -Werror -g
 NAME	=	regex
 
 SRCS	=	src/main.c \
-			src/ft_regex.c
+			src/ft_regex.c \
+			src/parser/parser.c \
+			src/utils/tokens/crochet.c \
+			src/utils/tokens/backslash.c
 
 OBJS	=	$(SRCS:.c=.o)
 
