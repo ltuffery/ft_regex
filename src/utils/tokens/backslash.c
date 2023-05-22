@@ -37,6 +37,8 @@ t_token	*backslash(void)
 	if (instance == NULL)
 	{
 		instance = malloc(sizeof(t_token));
+		if (instance == NULL)
+			return (NULL);
 		instance->nb = 0;
 		instance->in = in_backslash;
 		instance->is = is_backslash;
