@@ -20,19 +20,21 @@ static char	*charjoin(char *str, char c)
 	return (new_str);
 }
 
-static t_matches	*char_range(char c1, char c2, char *str)
+static t_matches	*char_range(char c1, char c2, char *str, int options)
 {
 	int			i;
 	t_matches	*matches;
 
 	i = 0;
 	matches = malloc(sizeof(t_matches));
+	if (matches == NULL)
+		return (NULL);
 	matches->content = NULL;
 	while (str[i] != '\0')
 	{
 		if (str[i] >= c1 && str[i] <= c2)
 			matches->content = charjoin(matches->content, str[i]);
-		else if (matches->content != NULL)
+		else if (matches->content != NULL && !options)
 			break ;
 		i++;
 	}
@@ -52,7 +54,7 @@ t_matches	*ft_regex(char *rule, char *str, int options)
 	{
 		if (rule[i] == '[')
 		{
-			matches = char_range(rule[i + 1], rule[i + 3], str);
+			matches = char_range(rule[i + 1], rule[i + 3], str, options);
 			break ;
 		}
 		i++;
